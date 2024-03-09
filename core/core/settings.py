@@ -39,6 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+
+EXTERNAL_APPS = [
+    'accounts',
+    'home'
+]
+
+INSTALLED_APPS += EXTERNAL_APPS
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -81,7 +89,7 @@ DATABASES = {
 }
 
 
-# Password validation
+# Password validation  
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
