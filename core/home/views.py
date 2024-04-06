@@ -16,3 +16,7 @@ def home(request):
 def sucess_page(request):
     print("*"*20)
     return HttpResponse("<h1>from sucess page<h2>")
+
+
+def html_page(request):
+    return render(request, "index.html")
