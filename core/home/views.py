@@ -9,8 +9,6 @@ def home(request):
                         <p> Hey this id from p tag </p>
                         <hr>
                         <h3 style="color:red">Hope you are loving it :) </h3>
-                        
-                        
                         """)
 
 def sucess_page(request):
