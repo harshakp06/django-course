@@ -1,24 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>My first Website</title>
-    <style>
-      img {
-        width: 1000px;
-        border-radius: 50px;
-        float: left;
-        margin-right: 10px;
-      }
+{% extends "base.html" %}
+{% block start %}
 
-      .username {
-        font-weight: bold;
-      }
-    </style>
-  </head>
-  <body>
-    <img src="images/1.png" alt="An image of html course" />
+    <h1>This is Index Page</h1>
+
+    <a href="/contact/">
+      Contact
+    </a>
+
+    <a href="/about/">
+      About
+    </a>
+
     <p class="username">Github @harshakp06</p>
     <p>Check Web page on html</p>
-    <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam illo reiciendis obcaecati magni eius, suscipit ullam repellat recusandae tenetur exercitationem numquam? Maiores eum officiis ex laborum, tenetur nulla reprehenderit incidunt.</h2>
-  </body>
-</html>
+    
+    <!-- {{peoples}} -->
+
+    <table class="container">
+      <tr>
+        <th>S no</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Can Vote</th>
+
+      </tr>
+      {% for people in peoples %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{people.name}}</td>
+        <td>{{people.age}}</td>
+        <td {% if people.age < 18 %} style="background: blueviolet" {% endif %}>
+          {% if people.age >= 18 %}
+
+          👍
+
+          {% else %}
+
+          👎
+
+          {% endif%}
+
+        </td>
+
+      </tr>
+      
+      {% endfor %}
+
+    </table> 
+    <p>
+      {% if "cucumber" in vegetables %}
+              YES AVAILABLE
+      {% elif "tomato" in vegetables %}
+              YES AVAILABLE
+      {% else %}
+            NOT AVAILABLE
+      {% endif %}
+
+    </p>
+
+
+
+ {% endblock %}
