@@ -4,21 +4,21 @@
 
 <div class="container mt-5">
 
-    <form class="col-6 mx-auto p-3 shadow-lg">
-        
+    <form class="col-6 mx-auto p-3 shadow-lg" method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
         <h2>Add Receipe</h2>
         <hr>
         <div class="mb-3">
           <label for="enterReceipeName">Receipe Name</label>
-          <input type="text" class="form-control" >
+          <input name="receipe_name" required type="text" class="form-control" >
         </div>
         <div class="mb-3">
-          <label for="enterReceipDescription">Receipe Description</label>
-          <textarea class="form-control"></textarea>
+          <label for="enterReceipDescription"  >Receipe Description</label>
+          <textarea class="form-control" name="receipe_description" required ></textarea>
         </div>
         <div class="mb-3">
           <label class="form-label" for="addFile">Receipe Image</label>
-          <input type="file" class="form-control">
+          <input name="receipe_image" type="file" class="form-control">
         </div>
         <button type="submit" class="btn btn-Sucess">Add Receipe</button>
       </form>
