@@ -24,6 +24,43 @@
       </form>
     
 
+      <!-- {{ receipes }} -->
+2
+2
+
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Receipe Name</th>
+            <th scope="col">Receipe Description</th>
+            <th scope="col">Receipe Image</th>
+            <th scope="col">Actions</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {% for receipe in receipes %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{receipe.receipe_name}}</td>
+            <td>{{receipe.receipe_description}}</td>
+            <td>
+              <img src="/media/{{receipe.receipe_image}}" style="height: 100px"></td>
+            
+            <td>
+              
+              <a href="/delete_receipe/{{receipe.id}}" class="btn btn-danger">Delete</a>
+
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    
+
 
 
 </div>
