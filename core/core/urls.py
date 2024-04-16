@@ -35,6 +35,10 @@ urlpatterns = [
 
 
     path('receipes/',receipes, name="receipes"),
+    path('login/',login_page, name="login_page"),
+    path('register/',register, name="register"),
+
+
 
     # path('html',html_page, name="html_page")
 ]
