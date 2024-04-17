@@ -162,4 +162,4 @@ cython_debug/
 
 receipe/
 
-# core/vege/migrations/
+core/vege/migrations/
