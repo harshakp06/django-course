@@ -10,4 +10,4 @@ admin.site.register(StudentID)
 
 admin.site.register(Student)
 
-admin.site.register(Department1)
+admin.site.register(Department)
