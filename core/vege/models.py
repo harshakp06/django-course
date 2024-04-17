@@ -46,6 +46,3 @@ class Student(models.Model):
         ordering = ['student_name']
         verbose_name = "student"
 
-
-
-# 789456123 pass
