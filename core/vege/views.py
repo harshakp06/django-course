@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from django.core.paginator import Paginator
+from django.db.models import Q
 # Create your views here.
 
 @login_required(login_url='/login')
@@ -115,7 +116,7 @@ def logout_page(request):
     return redirect('/login')
 
 
-def register(request):
+def register(request):  # sourcery skip: last-if-guard
 
     if request.method == "POST":
         first_name = request.POST.get('first_name')
@@ -146,3 +147,26 @@ def register(request):
 
 
     return render(request, "register.html")
+
+
+
+def get_students(request):
+    queryset = Student.objects.all()
+
+    if request.GET.get("search"):
+        serach = request.GET.get('search')
+        queryset = queryset.filter(
+            Q(student_name__icontains=serach) |
+            Q(department__department__icontains=serach) |
+            Q(student_id__student_id__icontains=serach) |
+            Q(student_email__icontains=serach) 
+            )
+
+    paginator = Paginator(queryset, 10)  # Show 25 contacts per page.
+
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+
+
+    return render(request,'report/students.html' ,{'queryset': page_obj})
