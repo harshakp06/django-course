@@ -18,9 +18,9 @@ class Department(models.Model):
 
     def __str__(self) -> str:
         return self.department
-    
-    # class Meta:
-    #     ordering: ['department'] # type: ignore
+    # 
+    class Meta:
+        ordering: ['department'] # type: ignore
 
 
 
