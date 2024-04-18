@@ -18,9 +18,9 @@ class Department(models.Model):
 
     def __str__(self) -> str:
         return self.department
-    
-    # class Meta:
-    #     ordering: ['department'] # type: ignore
+    # 
+    class Meta:
+        ordering: ['department'] # type: ignore
 
 
 
@@ -46,3 +46,23 @@ class Student(models.Model):
         ordering = ['student_name']
         verbose_name = "student"
 
+
+
+class Subject(models.Model):
+    subject_name = models.CharField(max_length=100)
+
+    def __str__(self) -> str:
+        return self.subject_name
+
+
+
+class SubjectMarks(models.Model):
+    student = models.ForeignKey(Student, related_name="studentmarks", on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    marks = models.IntegerField()
+
+    def __str__(self) -> str:
+        return f'{self.student.student_name} {self.subject.subject_name}'
+
+    class Meta:
+        unique_together = ['student','subject']
