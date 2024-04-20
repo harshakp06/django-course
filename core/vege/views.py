@@ -7,7 +7,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db.models import Q,Sum
+from django.contrib.auth import get_user_model
 # Create your views here.
+
+User = get_user_model()
 
 @login_required(login_url='/login')
 def receipes(request):
