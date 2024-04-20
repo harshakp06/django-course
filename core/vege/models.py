@@ -11,6 +11,7 @@ class Receipe(models.Model):
     receipe_name = models.CharField(max_length=100)
     receipe_description = models.TextField(default="No Description")
     receipe_image = models.ImageField(upload_to="receipe")
+    is_deleted = models.BooleanField(default=False)
 
 
 
