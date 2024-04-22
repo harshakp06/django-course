@@ -1,17 +1,33 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
+from .utils import generate_slug
+
 
 # Create your models here.
 
 User = get_user_model()
 
+# class ReceipesManager(models.Manager):
+#     def get_queryset(self):
+#         return super().get_queryset(is_deleted = False)
+
 class Receipe(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     receipe_name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
     receipe_description = models.TextField(default="No Description")
     receipe_image = models.ImageField(upload_to="receipe")
-    is_deleted = models.BooleanField(default=False)
+    
+    # is_deleted = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        self.slug = generate_slug(self.receipe_name)
+        super(Receipe, self).save(*args, **kwargs)
+
+    # objects = ReceipesManager()
+    # admin_objects = models.Manager()
+
 
 
 
